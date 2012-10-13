@@ -33,12 +33,12 @@ class TestUnitTest extends \PHPUnit_Framework_TestCase
         $suite->setTime(0.344244);
 
         $testCase = $suite->addTestCase();
-        $testCase ->addError('My error 1', 'Exception');
-        $testCase ->addError('My error 2', 'Exception');
-        $testCase ->addError('My error 3', 'Exception');
-        $testCase ->addError('My error 4', 'Exception');
-        $testCase ->addFailure('My failure 1', 'Exception');
-        $testCase ->addFailure('My failure 2', 'Exception');
+        $testCase->addError('My error 1', 'Exception');
+        $testCase->addError('My error 2', 'Exception');
+        $testCase->addError('My error 3', 'Exception');
+        $testCase->addError('My error 4', 'Exception');
+        $testCase->addFailure('My failure 1', 'Exception');
+        $testCase->addFailure('My failure 2', 'Exception');
 
         $xmlString = $this->document->saveXML();
         $xml = simplexml_load_string($xmlString);
@@ -47,6 +47,7 @@ class TestUnitTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('0.344244', $xml->testsuite[0]['time']);
         $this->assertEquals('4', $xml->testsuite[0]['errors']);
         $this->assertEquals('2', $xml->testsuite[0]['failures']);
+        $this->assertEquals('My error 2', (string) $xml->testsuite[0]->testcase[0]->error[1]);
 
         // Validate schema
         //$dom = new DOMDocument();
