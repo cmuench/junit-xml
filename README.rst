@@ -2,6 +2,8 @@
 JUnit XML Document Generator Library
 ====================================
 
+.. image:: https://secure.travis-ci.org/cmuench/junit-xml.png
+
 Install component with composer.
 
 .. code-block:: json
@@ -38,4 +40,3 @@ Example
     $testCase->addFailure('My failure 2', 'Exception');
 
     $document->save('results.xml');
-
