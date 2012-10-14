@@ -2,7 +2,7 @@
 <phpunit colors="true" strict="true">
     <testsuites>
         <testsuite name="N98 JunitXml Test">
-            <directory>.</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
