@@ -2,7 +2,11 @@
 JUnit XML Document Generator Library
 ====================================
 
+Build Status:
+
 .. image:: https://secure.travis-ci.org/cmuench/junit-xml.png
+
+(http://travis-ci.org/cmuench/junit-xml)
 
 Install component with composer.
 
