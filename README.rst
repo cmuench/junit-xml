@@ -37,5 +37,5 @@ Example
     $testCase->addFailure('My failure 1', 'Exception');
     $testCase->addFailure('My failure 2', 'Exception');
 
-    $this->document->save('results.xml');
+    $document->save('results.xml');
 
