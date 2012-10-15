@@ -32,6 +32,12 @@ class TestUnitTest extends \PHPUnit_Framework_TestCase
         $suite->setTimestamp($timeStamp);
         $suite->setTime(0.344244);
 
+        $xmlString = $this->document->saveXML();
+        $xml = simplexml_load_string($xmlString);
+        // There are currently no errors and failures
+        $this->assertEquals('0', $xml->testsuite[0]['errors']);
+        $this->assertEquals('0', $xml->testsuite[0]['failures']);
+
         $testCase = $suite->addTestCase();
         $testCase->addError('My error 1', 'Exception');
         $testCase->addError('My error 2', 'Exception');
