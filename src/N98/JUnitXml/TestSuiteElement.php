@@ -57,6 +57,10 @@ class TestSuiteElement extends \DOMElement
     {
         $testCaseElement = new TestCaseElement();
         $this->appendChild($testCaseElement);
+
+        $testCaseElement->setAttribute('errors', '0');
+        $testCaseElement->setAttribute('failures', '0');
+
         $this->incrementTestCount();
 
         return $testCaseElement;

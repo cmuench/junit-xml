@@ -25,9 +25,7 @@ class Document extends \DOMDocument
     {
         $testSuiteElement = new TestSuiteElement();
         $this->rootElement->appendChild($testSuiteElement);
-        $testSuiteElement->setAttribute('errors', '0');
-        $testSuiteElement->setAttribute('failures', '0');
-
+        
         return $testSuiteElement;
     }
 
