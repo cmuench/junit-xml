@@ -50,6 +50,7 @@ class TestCaseElement extends \DOMElement
         }
         $this->appendChild($errorElement);
 
+        $this->incrementErrorCount();
         $this->parentNode->incrementErrorCount();
 
         return $errorElement;
@@ -70,8 +71,33 @@ class TestCaseElement extends \DOMElement
         }
         $this->appendChild($failureElement);
 
+        $this->incrementFailureCount();
         $this->parentNode->incrementFailureCount();
 
         return $failureElement;
+    }
+
+    /**
+     * Increments failure counter in test suite
+     */
+    public function incrementFailureCount()
+    {
+        if ($this->hasAttribute('failures')) {
+            $this->setAttribute('failures', intval($this->getAttribute('failures')) + 1);
+        } else {
+            $this->setAttribute('failures', 1);
+        }
+    }
+
+    /**
+     * Increments error counter in test suite
+     */
+    public function incrementErrorCount()
+    {
+        if ($this->hasAttribute('errors')) {
+            $this->setAttribute('errors', intval($this->getAttribute('errors')) + 1);
+        } else {
+            $this->setAttribute('errors', 1);
+        }
     }
 }

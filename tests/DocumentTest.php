@@ -53,13 +53,23 @@ class TestUnitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($timeStamp->format(\DateTime::ISO8601), $xml->testsuite[0]['timestamp']);
         $this->assertEquals('0.344244', $xml->testsuite[0]['time']);
+        $this->assertEquals('4', $xml->testsuite[0]->testcase[0]['errors']);
         $this->assertEquals('4', $xml->testsuite[0]['errors']);
+        $this->assertEquals('2', $xml->testsuite[0]->testcase[0]['failures']);
         $this->assertEquals('2', $xml->testsuite[0]['failures']);
         $this->assertEquals('My error 2', (string) $xml->testsuite[0]->testcase[0]->error[1]);
 
-        // Validate schema
-        //$dom = new DOMDocument();
-        //$dom->loadXML($xmlString);
-        //$this->assertTrue('Schema validation failed', $dom->schemaValidate(__DIR__ . '/specs/junit.xsd'));
+        // Add another test case and see if testsuite error counter will be increased
+        $testCase2 = $suite->addTestCase();
+        $testCase2->addError('My error 1.1', 'Exception');
+        $testCase2->addFailure('My failure 1.1', 'Exception');
+
+        $xmlString = $this->document->saveXML();
+        $xml = simplexml_load_string($xmlString);
+
+        $this->assertEquals('1', $xml->testsuite[0]->testcase[1]['errors']);
+        $this->assertEquals('5', $xml->testsuite[0]['errors']);
+        $this->assertEquals('1', $xml->testsuite[0]->testcase[1]['failures']);
+        $this->assertEquals('3', $xml->testsuite[0]['failures']);
     }
 }

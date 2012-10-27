@@ -14,6 +14,7 @@ class Document extends \DOMDocument
     public function __construct()
     {
         parent::__construct('1.0', 'UTF-8');
+        $this->formatOutput = true;
         $this->rootElement = $this->createElement('testsuites');
         $this->appendChild($this->rootElement);
     }
