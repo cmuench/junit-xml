@@ -2,6 +2,7 @@
     "name": "n98/junit-xml",
     "description": "JUnit XML Document generation library",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Christian Münch",
