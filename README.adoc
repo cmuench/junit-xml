@@ -1,6 +1,6 @@
 == JUnit XML Document Generator Library
 
-https://secure.travis-ci.org/cmuench/junit-xml[image:https://secure.travis-ci.org/cmuench/junit-xml.png[image]]
+https://github.com/cmuench/junit-xml/actions?query=workflow:CI[image:https://github.com/cmuench/junit-xml/workflows/CI/badge.svg[image]]
 
 Install component with composer.
 
