@@ -6,7 +6,16 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        php_version: ['8.0', '8.1', '8.2', '8.3', '8.4']
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: php-actions/composer@v5
-    - uses: php-actions/phpunit@v2
+    - uses: actions/checkout@v4
+    - uses: php-actions/composer@v6
+      with:
+        php_version: ${{ matrix.php_version }}
+        command: update
+    - uses: php-actions/phpunit@v4
+      with:
+        php_version: ${{ matrix.php_version }}
