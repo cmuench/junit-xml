@@ -2,9 +2,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use \N98\JUnitXml\Document;
+use N98\JUnitXml\Document;
+use PHPUnit\Framework\TestCase;
 
-class TestUnitTest extends \PHPUnit\Framework\TestCase
+class DocumentTest extends TestCase
 {
     /**
      * @var Document
@@ -21,10 +22,7 @@ class TestUnitTest extends \PHPUnit\Framework\TestCase
         unset($this->document);
     }
 
-    /**
-     * @test
-     */
-    public function addTestSuite()
+    public function testAddTestSuite()
     {
         $suite = $this->document->addTestSuite();
         $timeStamp = new \DateTime();
